@@ -1,0 +1,4 @@
+COPY monthly_costdata(month, cw_cost_befor_tax, cw_cost_after_tax, es_cost_befor_tax, es_cost_after_tax)
+FROM '~/monthly-cloud-observability-costs.csv'
+DELIMITER ','
+CSV HEADER;

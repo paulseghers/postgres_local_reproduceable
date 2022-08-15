@@ -1,0 +1,29 @@
+first make a Postgresql container in docker, with a chinker command, or define it 
+in a docker-compose. The fields that are important are the `ports`, as well as the
+`POSTGRES_USER` variables set in the `.yaml`
+
+Once this is done, have a script called `make_table` with the query to make the table
+and another `copy_into_table` or something similar then
+
+run the docker compose
+```
+docker-compose -f docker-compose-postgresql.yaml -p postgres-basic-serv up```
+
+then
+```
+docker cp make_costdata_table postgres-basic-serv_db_1:/
+docker cp copy_costdata_csv_into_table postgres-basic-serv_db_1:/
+```
+
+so the files to read commands from are in the docker container
+
+then
+```
+docker exec -it postgres-basic-serv_db_1 /bin/sh
+```
+
+```
+psql --username=postgres #or whatever you set in the docker-composer as the postgres user
+```
+
+\l to see databases (I think), \dt to list tables, \i <filename> to run contents of <filename>
