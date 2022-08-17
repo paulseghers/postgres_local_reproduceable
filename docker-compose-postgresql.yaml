@@ -10,6 +10,23 @@ services:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+    networks:
+      db-exposer:
+  graf:
+    image: grafana/grafana-enterprise:8.2.1
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes: 
+      - grafana-data:/var/lib/grafana
+    networks:
+      db-exposer:
 volumes:
   db:
     driver: local
+  grafana-data:
+    driver: local
+networks:
+  db-exposer:
+    name: db-exposer
+

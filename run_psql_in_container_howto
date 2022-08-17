@@ -1,4 +1,4 @@
-first make a Postgresql container in docker, with a chinker command, or define it 
+first make a Postgresql container in docker, with a chunker command, or define it 
 in a docker-compose. The fields that are important are the `ports`, as well as the
 `POSTGRES_USER` variables set in the `.yaml`
 
